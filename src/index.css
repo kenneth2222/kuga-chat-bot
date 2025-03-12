@@ -7,7 +7,7 @@ body {
     padding: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #fafafc;
+    /* background-color: #fafafc; */
     color: #777;
     display: flex;
     justify-content: center;

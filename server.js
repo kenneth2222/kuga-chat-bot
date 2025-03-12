@@ -13,7 +13,8 @@ app.post('/gemini', async (req, res) => {
 //    console.log(req.body.history)
 //    console.log(req.body.message)
 
-   const model = genAI.getGenerativeModel({model: "gemini-pro"})
+//    const model = genAI.getGenerativeModel({model: "gemini-pro"})
+   const model = genAI.getGenerativeModel({model: "gemini-1.5-pro"})
     const chat = model.startChat({
         history: req.body.history,
         message: req.body.message
@@ -27,5 +28,14 @@ app.post('/gemini', async (req, res) => {
     //res.send(text)
     res.send(response)
 })
+
+app.get('/list-models', async (req, res) => {
+    try {
+        const models = await genAI.listModels();
+        res.json(models);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
